@@ -103,54 +103,47 @@ void delete(int heap[],int *sz)
 	}
 }
 
-int kthlargestnumber(int heap[],int *sz,int k)
-{
-	int f=*sz;
-	f=f-1;
-	if(k==1)
-	{
-		return heap[0];
-	}
-	else
-	{
-		int ct=0;
-		while(ct!=k)
-		{
-			delete(heap,sz);
-			ct++;
-		}
-		int ans=heap[*sz];
-		int i=*sz;
-		printf("i=%d\n",i);
-		printf("f=%d\n",f);
-		for(int k=i;k<=f;k++)
-		{
-			insert(heap,heap[k],sz);
-		}
-		return ans;
-	}
-}
-
 int main()
 {
-	int n,sz=0;
+	int n;
 	scanf("%d",&n);
-	int heap[n];
+	int heap[n],sz=0;
 	for(int i=0;i<n;i++)
 	{
 		scanf("%d",&heap[i]);
 		insert(heap,heap[i],&sz);
 	}
-	printf("%d",heap[0]);
-	int k;
-	scanf("%d",&k);
-	int ele=kthlargestnumber(heap,&sz,k);
-	printf("%d\n",ele);
+	while(sz!=1)
+	{
+		delete(heap,&sz);
+	}
 	for(int i=0;i<n;i++)
 	{
 		printf("%d ",heap[i]);
-	}
+	}	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
